@@ -6,7 +6,7 @@ function Pokedex() {
     const [pokemonImage, setPokemonImage] = useState('')
     
     useEffect(() => {
-        console.log('IN USEEFFECT')
+        console.log('INSIDE USEEFFECT')
         if (pokemonName === '') {
             return
         }
@@ -14,6 +14,9 @@ function Pokedex() {
             .get(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`)
             .then((res) => {
                 setPokemonImage(res.data.sprites.front_default)
+            })
+            .catch((err) => {
+                setPokemonImage('')
             })
     })
 
